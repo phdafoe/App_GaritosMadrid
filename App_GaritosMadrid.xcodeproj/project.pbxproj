@@ -61,6 +61,7 @@
 		8B4DDFC81E60CF7C004EFEE7 /* App_GaritosMadrid-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "App_GaritosMadrid-Bridging-Header.h"; sourceTree = "<group>"; };
 		8B4DDFC91E60CF7D004EFEE7 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		8B4DDFCA1E60CF7D004EFEE7 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
+		8B6B9D721E85A323002C0EC2 /* Teoria NSCoding.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = "Teoria NSCoding.playground"; sourceTree = "<group>"; };
 		8B9611081E8587A300E69037 /* GMGaritoModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GMGaritoModel.swift; sourceTree = "<group>"; };
 		8BE61F241E733A2B00DF8867 /* GMComicsPostersModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GMComicsPostersModel.swift; sourceTree = "<group>"; };
 		8BE61F261E733AF400DF8867 /* GMParserPosterData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GMParserPosterData.swift; sourceTree = "<group>"; };
@@ -161,6 +162,7 @@
 			isa = PBXGroup;
 			children = (
 				8B4DDFB51E60C101004EFEE7 /* AppDelegate.swift */,
+				8B6B9D721E85A323002C0EC2 /* Teoria NSCoding.playground */,
 				8B3549961E730A6300203441 /* PARSERS */,
 				8B3549931E73091A00203441 /* MODELS */,
 				8B3549901E73088900203441 /* API */,
