@@ -27,6 +27,7 @@
 		8B4DDFBD1E60C101004EFEE7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B4DDFBC1E60C101004EFEE7 /* Assets.xcassets */; };
 		8B4DDFC01E60C101004EFEE7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B4DDFBE1E60C101004EFEE7 /* LaunchScreen.storyboard */; };
 		8B4DDFCB1E60CF7D004EFEE7 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B4DDFCA1E60CF7D004EFEE7 /* SWRevealViewController.m */; };
+		8B9611091E8587A300E69037 /* GMGaritoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9611081E8587A300E69037 /* GMGaritoModel.swift */; };
 		8BE61F251E733A2B00DF8867 /* GMComicsPostersModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE61F241E733A2B00DF8867 /* GMComicsPostersModel.swift */; };
 		8BE61F271E733AF400DF8867 /* GMParserPosterData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE61F261E733AF400DF8867 /* GMParserPosterData.swift */; };
 		8BE61F2A1E733DFC00DF8867 /* GMListaPostersTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE61F291E733DFC00DF8867 /* GMListaPostersTableViewController.swift */; };
@@ -60,6 +61,7 @@
 		8B4DDFC81E60CF7C004EFEE7 /* App_GaritosMadrid-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "App_GaritosMadrid-Bridging-Header.h"; sourceTree = "<group>"; };
 		8B4DDFC91E60CF7D004EFEE7 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		8B4DDFCA1E60CF7D004EFEE7 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
+		8B9611081E8587A300E69037 /* GMGaritoModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GMGaritoModel.swift; sourceTree = "<group>"; };
 		8BE61F241E733A2B00DF8867 /* GMComicsPostersModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GMComicsPostersModel.swift; sourceTree = "<group>"; };
 		8BE61F261E733AF400DF8867 /* GMParserPosterData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GMParserPosterData.swift; sourceTree = "<group>"; };
 		8BE61F291E733DFC00DF8867 /* GMListaPostersTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GMListaPostersTableViewController.swift; sourceTree = "<group>"; };
@@ -112,6 +114,7 @@
 			children = (
 				8B3549911E73090F00203441 /* GMPhotosModel.swift */,
 				8BE61F241E733A2B00DF8867 /* GMComicsPostersModel.swift */,
+				8B9611081E8587A300E69037 /* GMGaritoModel.swift */,
 			);
 			name = MODELS;
 			sourceTree = "<group>";
@@ -340,6 +343,7 @@
 				8B3549921E73090F00203441 /* GMPhotosModel.swift in Sources */,
 				8BE61F2D1E733E1200DF8867 /* GMDetallePosterCustomCell.swift in Sources */,
 				8B3549831E73018D00203441 /* APIUTILS.swift in Sources */,
+				8B9611091E8587A300E69037 /* GMGaritoModel.swift in Sources */,
 				8B35499C1E7313D700203441 /* GMDetallePhotoCustomCell.swift in Sources */,
 				8B4DDFB81E60C101004EFEE7 /* CurrentViewController.swift in Sources */,
 				8BE61F251E733A2B00DF8867 /* GMComicsPostersModel.swift in Sources */,

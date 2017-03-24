@@ -58,6 +58,10 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="myActiInd" destination="ZDn-q3-uiw" id="SkR-Vv-Nzb"/>
+                        <outlet property="myAddButton" destination="waN-9T-8v5" id="wf2-ZD-L0Z"/>
+                        <outlet property="myBuscarMapa" destination="nuV-th-bTc" id="Wee-GA-pxE"/>
+                        <outlet property="myMapView" destination="NYt-DK-cgc" id="2fC-8T-Jh8"/>
                         <outlet property="myMenuBTN" destination="Zj5-av-suc" id="8MO-HR-gxI"/>
                     </connections>
                 </viewController>
