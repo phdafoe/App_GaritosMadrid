@@ -7,8 +7,19 @@
 //
 
 import UIKit
+import PromiseKit
+import Kingfisher
+import PKHUD
 
 class GMListaPostersTableViewController: UITableViewController {
+    
+    //MARK: - Variable locales
+    var arrayPosters : [GMComicsPostersModel] = []
+    var idNumero : Int?
+    var idObjeto : String?
+    let arrayPersonajes = ["Superman", "Batman", "Hulk", "Flash"]
+    var customRefresControl = UIRefreshControl()
+    
     
     //MARK: - IBoutlets
     @IBOutlet weak var menuButton: UIBarButtonItem!
@@ -18,6 +29,14 @@ class GMListaPostersTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        customRefresControl.attributedTitle = NSAttributedString(string: "Arrastra para recargar")
+        customRefresControl.addTarget(self, action: #selector(self.recargardo), for: .valueChanged)
+        tableView.addSubview(customRefresControl)
+        
+        idNumero = randomNumero()
+        let randomString = Int(arc4random_uniform(UInt32(arrayPersonajes.count)))
+        idObjeto = arrayPersonajes[randomString]
         
         //MARK: - LLamada
         llamadaPoster()
@@ -42,72 +61,87 @@ class GMListaPostersTableViewController: UITableViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    func recargardo(){
+        idNumero = randomNumero()
+        llamadaPoster()
+        customRefresControl.endRefreshing()
+    }
+    
+    
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return arrayPosters.count
     }
 
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "DetallePosterCustomCell", for: indexPath) as! GMDetallePosterCustomCell
 
         // Configure the cell...
-
+        let model = arrayPosters[indexPath.row]
+        
+        cell.myTituloPoster.text = model.title
+        cell.myYearPoster.text = model.year
+        cell.myIdPoster.text = model.imdbId
+        cell.myTipoPoster.text = model.type
+        
+        cell.myImagenPoster.kf.setImage(with: URL(string: model.poster!),
+                                        placeholder: #imageLiteral(resourceName: "placehoder"),
+                                        options: nil,
+                                        progressBlock: nil,
+                                        completionHandler: nil)
         return cell
     }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
+    
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 415
     }
-    */
+    
 
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+    func llamadaPoster(){
+        let posterData = GMParserPosterData()
+       
+        
+        HUD.show(.progress)
+        firstly{
+            return when(resolved: posterData.getDataImdb(idObjeto!, idNumero: "\(idNumero!)"))
+            }.then{_ in
+                self.arrayPosters = posterData.getParseImdb()
+            }.then{_ in
+                self.tableView.reloadData()
+            }.then{_ in
+                HUD.hide(afterDelay: 0)
+            }.catch { (error) in
+                self.present(muestraAlert("Estimado usuario", messageData: "\(error.localizedDescription)", titleAction: "OK"), animated: true, completion: nil)
+            }
     }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
+    
+    func randomNumero() -> Int{
+        let customRandom = Int(arc4random_uniform(12))
+        return customRandom
     }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 
 }
