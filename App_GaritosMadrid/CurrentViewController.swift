@@ -33,11 +33,6 @@ class CurrentViewController: UIViewController {
         }
     }
     
-    
-    
-    
-    
-    
     //MARK: - IBOutlet
     @IBOutlet weak var myMenuBTN : UIBarButtonItem!
     @IBOutlet weak var myBuscarMapa: UIButton!
@@ -46,9 +41,20 @@ class CurrentViewController: UIViewController {
     @IBOutlet weak var myActiInd: UIActivityIndicatorView!
     
     
+    //MARK: - IBActions
+    @IBAction func obtenerLocalizacion(_ sender: Any) {
+        iniciaLocationManager()
+    }
+    
+    
+    
+    
     //MARK: - LIFE VC
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        actualizandoLocalizacion = false
+        
         
         if revealViewController() != nil{
             myMenuBTN.target = revealViewController()
@@ -59,12 +65,57 @@ class CurrentViewController: UIViewController {
         
         // Do any additional setup after loading the view, typically from a nib.
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    //MARK: - Utils
+    func iniciaLocationManager(){
+        let estadoAutorizado = CLLocationManager.authorizationStatus()
+        switch estadoAutorizado {
+        case .notDetermined:
+            locationManager.requestWhenInUseAuthorization()
+        case .denied, .restricted:
+            present(muestraAlert("Localización desactivada",
+                                 messageData: "Por favor, activa la localización para esta aplicación en los ajustes del dispositivo",
+                                 titleAction: "OK"),
+                    animated: true,
+                    completion: nil)
+        default:
+            if CLLocationManager.locationServicesEnabled(){
+                actualizandoLocalizacion = true
+                myAddButton.isEnabled = false
+                locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+                locationManager.delegate = self
+                locationManager.requestLocation()
+                
+                let region = MKCoordinateRegionMakeWithDistance(myMapView.userLocation.coordinate, 100, 100)
+                myMapView.setRegion(myMapView.regionThatFits(region), animated: true)
+            }
+        }
     }
+    
+}//TODO: -- FIN DE LA CLASE
 
-
+//MARK: - CoreLocation Delegate
+extension CurrentViewController : CLLocationManagerDelegate{
+    
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
