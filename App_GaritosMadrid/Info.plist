@@ -4,6 +4,12 @@
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
+	<key>NSLocationUsageDescription</key>
+	<string>Garitos de Madrid necesita saber en donde estás</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>Garitos de Madrid siempre necesita saber en donde estás</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Garitos de Madrid necesita saber en donde estás</string>
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSAllowsArbitraryLoads</key>

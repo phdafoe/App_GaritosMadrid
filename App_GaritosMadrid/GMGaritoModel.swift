@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MapKit
 
 class GMGaritoModel: NSObject {
     
@@ -22,11 +23,34 @@ class GMGaritoModel: NSObject {
         self.imagenGarito = pImagenGarito
         super.init()
     }
-    
-    
-    
-    
-    
-    
+}//TODO: - Fin de la clase modelo
 
+
+extension GMGaritoModel : MKAnnotation{
+    
+    var coordinate: CLLocationCoordinate2D {
+        get{
+            return CLLocationCoordinate2D(latitude: latitudGarito!, longitude: longitudGarito!)
+        }
+    }
+    
+    var title: String? {
+        get{
+            return "Garito de Madrid"
+        }
+    }
+    
+    var subtitle: String? {
+        get{
+            return direccionGarito?.replacingOccurrences(of: "\n", with: "")
+        }
+    }
+    
 }
+
+
+
+
+
+
+

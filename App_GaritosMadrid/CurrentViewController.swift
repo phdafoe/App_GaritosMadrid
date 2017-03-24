@@ -97,6 +97,72 @@ class CurrentViewController: UIViewController {
 //MARK: - CoreLocation Delegate
 extension CurrentViewController : CLLocationManagerDelegate{
     
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print("*** Error en el CoreLocation ***")
+    }
+    
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        
+        guard let userLocation = locations.last else {
+            return
+        }
+        
+        let latitud = userLocation.coordinate.latitude
+        let longitud = userLocation.coordinate.longitude
+        
+        CLGeocoder().reverseGeocodeLocation(userLocation) { (placemarks, error) in
+            self.actualizandoLocalizacion = false
+            if error == nil{
+                var direccion = ""
+                if let placemarkData = placemarks?.last{
+                    direccion = self.stringFromPlacemark(placemarkData)
+                }
+                self.garito = GMGaritoModel(pDireccionGarito: direccion,
+                                            pLatitudGarito: latitud,
+                                            pLongitudGarito: longitud,
+                                            pImagenGarito: "")
+                self.myAddButton.isEnabled = true
+            }else{
+               self.present(muestraAlert("Oops!",
+                                    messageData: "Tienes problemas de conexión",
+                                    titleAction: "ok"),
+                       animated: true,
+                       completion: nil)
+            }
+        }
+    }
+    
+    func stringFromPlacemark(_ placemarkData : CLPlacemark) -> String{
+        
+        var lineaUno = ""
+        if let stringUno = placemarkData.thoroughfare{
+            lineaUno += stringUno + ", "
+        }
+        if let stringUno = placemarkData.subThoroughfare{
+            lineaUno += stringUno
+        }
+        
+        var lineaDos = ""
+        if let stringDos = placemarkData.postalCode{
+            lineaDos += stringDos + " "
+        }
+        if let stringDos = placemarkData.locality{
+            lineaDos += stringDos
+        }
+        
+        var lineaTres = ""
+        if let stringTres = placemarkData.administrativeArea{
+            lineaTres += stringTres + " "
+        }
+        if let stringTres = placemarkData.country{
+            lineaTres += stringTres
+        }
+        
+        return lineaUno + "\n" + lineaDos + "\n" + lineaTres
+    }
+    
+    
 }
 
 
