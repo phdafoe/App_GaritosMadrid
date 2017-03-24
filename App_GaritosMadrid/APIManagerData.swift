@@ -17,22 +17,38 @@ class APIManagerData: NSObject {
     
     //MARK: - SALVAR DATOS
     func salvarDatos(){
-        if let urlData = dataBaseUrl(){
-            
+        if let urlData = dateBaseUrl(){
+            NSKeyedArchiver.archiveRootObject(garito, toFile: urlData.path)
+        }else{
+            print("Error gurdando datos")
         }
     }
     
     func cargarDatos(){
-        
+        if let urlData = dateBaseUrl(), let datosSalvados = NSKeyedUnarchiver.unarchiveObject(withFile: urlData.path) as? [GMGaritoModel]{
+            garito = datosSalvados
+        }else{
+            print("Error cargando Datos")
+        }
     }
     
     
-    func dataBaseUrl() -> URL?{
-        
+    func dateBaseUrl() -> URL?{
+        if let documentDirectory = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first{
+            let customUrl = URL(fileURLWithPath: documentDirectory)
+            return customUrl.appendingPathComponent("garitos.data")
+        }else{
+            return nil
+        }
     }
     
     func imagenUrl() -> URL?{
-        
+        if let documentDirectory = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first{
+            let customUrl = URL(fileURLWithPath: documentDirectory)
+            return customUrl
+        }else{
+            return nil
+        }
         
     }
     
