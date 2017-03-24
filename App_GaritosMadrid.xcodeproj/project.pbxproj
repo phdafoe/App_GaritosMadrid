@@ -27,6 +27,8 @@
 		8B4DDFBD1E60C101004EFEE7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8B4DDFBC1E60C101004EFEE7 /* Assets.xcassets */; };
 		8B4DDFC01E60C101004EFEE7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B4DDFBE1E60C101004EFEE7 /* LaunchScreen.storyboard */; };
 		8B4DDFCB1E60CF7D004EFEE7 /* SWRevealViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8B4DDFCA1E60CF7D004EFEE7 /* SWRevealViewController.m */; };
+		8B6B9D741E85B556002C0EC2 /* DetalleGaritoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B6B9D731E85B556002C0EC2 /* DetalleGaritoViewController.swift */; };
+		8B6B9D761E85BBF0002C0EC2 /* APIManagerData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B6B9D751E85BBF0002C0EC2 /* APIManagerData.swift */; };
 		8B9611091E8587A300E69037 /* GMGaritoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B9611081E8587A300E69037 /* GMGaritoModel.swift */; };
 		8BE61F251E733A2B00DF8867 /* GMComicsPostersModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE61F241E733A2B00DF8867 /* GMComicsPostersModel.swift */; };
 		8BE61F271E733AF400DF8867 /* GMParserPosterData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8BE61F261E733AF400DF8867 /* GMParserPosterData.swift */; };
@@ -62,6 +64,8 @@
 		8B4DDFC91E60CF7D004EFEE7 /* SWRevealViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SWRevealViewController.h; sourceTree = "<group>"; };
 		8B4DDFCA1E60CF7D004EFEE7 /* SWRevealViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SWRevealViewController.m; sourceTree = "<group>"; };
 		8B6B9D721E85A323002C0EC2 /* Teoria NSCoding.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = "Teoria NSCoding.playground"; sourceTree = "<group>"; };
+		8B6B9D731E85B556002C0EC2 /* DetalleGaritoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetalleGaritoViewController.swift; sourceTree = "<group>"; };
+		8B6B9D751E85BBF0002C0EC2 /* APIManagerData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIManagerData.swift; sourceTree = "<group>"; };
 		8B9611081E8587A300E69037 /* GMGaritoModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GMGaritoModel.swift; sourceTree = "<group>"; };
 		8BE61F241E733A2B00DF8867 /* GMComicsPostersModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GMComicsPostersModel.swift; sourceTree = "<group>"; };
 		8BE61F261E733AF400DF8867 /* GMParserPosterData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GMParserPosterData.swift; sourceTree = "<group>"; };
@@ -106,6 +110,7 @@
 			children = (
 				8B3549821E73018D00203441 /* APIUTILS.swift */,
 				8B3549841E73051A00203441 /* APIHELPERS.swift */,
+				8B6B9D751E85BBF0002C0EC2 /* APIManagerData.swift */,
 			);
 			name = API;
 			sourceTree = "<group>";
@@ -133,6 +138,7 @@
 			isa = PBXGroup;
 			children = (
 				8B4DDFB71E60C101004EFEE7 /* CurrentViewController.swift */,
+				8B6B9D731E85B556002C0EC2 /* DetalleGaritoViewController.swift */,
 				8BE61F2F1E733E1A00DF8867 /* VC_POSTERS */,
 				8BE61F281E733DD600DF8867 /* VC_PHOTOS */,
 			);
@@ -356,6 +362,8 @@
 				8B3549951E730A5A00203441 /* GMParserPhotosData.swift in Sources */,
 				8B3549991E73139C00203441 /* GMListaPhotosTableViewController.swift in Sources */,
 				8B4DDFCB1E60CF7D004EFEE7 /* SWRevealViewController.m in Sources */,
+				8B6B9D761E85BBF0002C0EC2 /* APIManagerData.swift in Sources */,
+				8B6B9D741E85B556002C0EC2 /* DetalleGaritoViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
