@@ -8,11 +8,17 @@
 
 import UIKit
 
+//TODO: - Fase Delegado
+protocol DetalleGaritoViewControllerDelegate{
+    func detalleBarEtiquetado(_ detalleVC : DetalleGaritoViewController, barEtiquetado : GMGaritoModel)
+}
+
+
 class DetalleGaritoViewController: UIViewController {
     
     //MARK: - Variables locales
     var garito : GMGaritoModel?
-    
+    var ciceDelegate : DetalleGaritoViewControllerDelegate?
     
     //MARK: - IBOutlets
     @IBOutlet weak var myImageViewPicker: UIImageView!
@@ -29,7 +35,27 @@ class DetalleGaritoViewController: UIViewController {
     
     @IBAction func saveInfo(_ sender: Any) {
         
-        
+        if let imageData = myImageViewPicker.image{
+            let randomNameImage = UUID().uuidString.appending(".jpg")
+            if let customUrl = APIManagerData.shared.imagenUrl()?.appendingPathComponent(randomNameImage){
+                if let imageDataDes = UIImageJPEGRepresentation(imageData, 0.3){
+                    do{
+                        try imageDataDes.write(to: customUrl)
+                    }catch{
+                        print("Error salvando datos")
+                    }
+                }
+            }
+            
+            garito = GMGaritoModel(pDireccionGarito: myDireccionLBL.text!,
+                                   pLatitudGarito: Double(myLatitudLBL.text!)!,
+                                   pLongitudGarito: Double(myLongitudLBL.text!)!,
+                                   pImagenGarito: randomNameImage)
+            
+            if let infoGarito = garito{
+                ciceDelegate?.detalleBarEtiquetado(self, barEtiquetado: infoGarito)
+            }
+        }
     }
     
     //MARK: - LIFE VC

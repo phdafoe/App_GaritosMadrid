@@ -20,7 +20,7 @@ class APIManagerData: NSObject {
         if let urlData = dateBaseUrl(){
             NSKeyedArchiver.archiveRootObject(garito, toFile: urlData.path)
         }else{
-            print("Error gurdando datos")
+            print("Error guardando datos")
         }
     }
     
@@ -48,8 +48,7 @@ class APIManagerData: NSObject {
             return customUrl
         }else{
             return nil
-        }
-        
+        } 
     }
     
     
