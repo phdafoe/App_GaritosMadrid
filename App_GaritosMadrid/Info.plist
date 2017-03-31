@@ -10,6 +10,12 @@
 	<string>Garitos de Madrid siempre necesita saber en donde estás</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Garitos de Madrid necesita saber en donde estás</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Garitos de Madrid necesita acceder a la camara del dispositivo</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Garitos de Madrid necesita acceder a la libreria de fotos del dispositivo</string>
+	<key>LSApplicationCategoryType</key>
+	<string></string>
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSAllowsArbitraryLoads</key>

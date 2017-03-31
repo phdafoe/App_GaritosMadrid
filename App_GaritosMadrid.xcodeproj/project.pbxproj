@@ -21,6 +21,7 @@
 		8B3549991E73139C00203441 /* GMListaPhotosTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3549981E73139C00203441 /* GMListaPhotosTableViewController.swift */; };
 		8B35499C1E7313D700203441 /* GMDetallePhotoCustomCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B35499A1E7313D700203441 /* GMDetallePhotoCustomCell.swift */; };
 		8B35499D1E7313D700203441 /* GMDetallePhotoCustomCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8B35499B1E7313D700203441 /* GMDetallePhotoCustomCell.xib */; };
+		8B3A179B1E8EAD420080669F /* ImagenGaritoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B3A179A1E8EAD420080669F /* ImagenGaritoViewController.swift */; };
 		8B4DDFB61E60C101004EFEE7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4DDFB51E60C101004EFEE7 /* AppDelegate.swift */; };
 		8B4DDFB81E60C101004EFEE7 /* CurrentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8B4DDFB71E60C101004EFEE7 /* CurrentViewController.swift */; };
 		8B4DDFBB1E60C101004EFEE7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8B4DDFB91E60C101004EFEE7 /* Main.storyboard */; };
@@ -53,6 +54,7 @@
 		8B3549981E73139C00203441 /* GMListaPhotosTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GMListaPhotosTableViewController.swift; sourceTree = "<group>"; };
 		8B35499A1E7313D700203441 /* GMDetallePhotoCustomCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GMDetallePhotoCustomCell.swift; sourceTree = "<group>"; };
 		8B35499B1E7313D700203441 /* GMDetallePhotoCustomCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GMDetallePhotoCustomCell.xib; sourceTree = "<group>"; };
+		8B3A179A1E8EAD420080669F /* ImagenGaritoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagenGaritoViewController.swift; sourceTree = "<group>"; };
 		8B4DDFB21E60C101004EFEE7 /* App_GaritosMadrid.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = App_GaritosMadrid.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8B4DDFB51E60C101004EFEE7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8B4DDFB71E60C101004EFEE7 /* CurrentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentViewController.swift; sourceTree = "<group>"; };
@@ -139,6 +141,7 @@
 			children = (
 				8B4DDFB71E60C101004EFEE7 /* CurrentViewController.swift */,
 				8B6B9D731E85B556002C0EC2 /* DetalleGaritoViewController.swift */,
+				8B3A179A1E8EAD420080669F /* ImagenGaritoViewController.swift */,
 				8BE61F2F1E733E1A00DF8867 /* VC_POSTERS */,
 				8BE61F281E733DD600DF8867 /* VC_PHOTOS */,
 			);
@@ -358,6 +361,7 @@
 				8BE61F271E733AF400DF8867 /* GMParserPosterData.swift in Sources */,
 				8BE61F2A1E733DFC00DF8867 /* GMListaPostersTableViewController.swift in Sources */,
 				8B3549851E73051A00203441 /* APIHELPERS.swift in Sources */,
+				8B3A179B1E8EAD420080669F /* ImagenGaritoViewController.swift in Sources */,
 				8B4DDFB61E60C101004EFEE7 /* AppDelegate.swift in Sources */,
 				8B3549951E730A5A00203441 /* GMParserPhotosData.swift in Sources */,
 				8B3549991E73139C00203441 /* GMListaPhotosTableViewController.swift in Sources */,

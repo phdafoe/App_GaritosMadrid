@@ -16,6 +16,8 @@ class CurrentViewController: UIViewController {
     //MARK: - Varibale locales
     var garito : GMGaritoModel?
     var locationManager = CLLocationManager()
+    var calloutSelected : UIImage?
+    
     var actualizandoLocalizacion = false{
         didSet{
             if actualizandoLocalizacion{
@@ -46,15 +48,13 @@ class CurrentViewController: UIViewController {
         iniciaLocationManager()
     }
     
-    
-    
-    
     //MARK: - LIFE VC
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        actualizandoLocalizacion = false
+        APIManagerData.shared.cargarDatos()
         
+        actualizandoLocalizacion = false
         
         if revealViewController() != nil{
             myMenuBTN.target = revealViewController()
@@ -62,9 +62,16 @@ class CurrentViewController: UIViewController {
             revealViewController().rightViewRevealWidth = 150
             view.addGestureRecognizer(self.revealViewController().panGestureRecognizer())
         }
-        
-        // Do any additional setup after loading the view, typically from a nib.
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        myMapView.delegate = self
+        myMapView.addAnnotations(APIManagerData.shared.garito)
+        
+    }
+    
     
     //MARK: - Utils
     func iniciaLocationManager(){
@@ -91,6 +98,23 @@ class CurrentViewController: UIViewController {
             }
         }
     }
+    
+    
+    //MARK: - Navigation
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "tagGaritoSegue"{
+            let navVC = segue.destination as! UINavigationController
+            let detalleVC = navVC.topViewController as! DetalleGaritoViewController
+            detalleVC.garito = garito
+            detalleVC.ciceDelegate = self
+        }
+        if segue.identifier == "showPinImage"{
+            let navVC = segue.destination as! UINavigationController
+            let detalleImageVC = navVC.topViewController as! ImagenGaritoViewController
+            detalleImageVC.calloutNewImage = calloutSelected
+        }
+    }
+    
     
 }//TODO: -- FIN DE LA CLASE
 
@@ -163,7 +187,94 @@ extension CurrentViewController : CLLocationManagerDelegate{
     }
     
     
+}//TODO: - Fin de la extension Location Manager
+
+//MARK: - DetalleVC Delegate
+extension CurrentViewController : DetalleGaritoViewControllerDelegate{
+    func detalleBarEtiquetado(_ detalleVC: DetalleGaritoViewController, barEtiquetado: GMGaritoModel) {
+        
+        APIManagerData.shared.garito.append(barEtiquetado)
+        APIManagerData.shared.salvarDatos()
+    }
+}//TODO: - Fin de la extension DetalleVC Delegate
+
+//MARK: - Mapkit delegate
+extension CurrentViewController : MKMapViewDelegate{
+    
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        //1
+        if annotation is MKUserLocation{
+            return nil
+        }
+        //2
+        var annotationView = myMapView.dequeueReusableAnnotationView(withIdentifier: "garitoPin")
+        if annotationView == nil{
+            annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: "garitoPin")
+        }else{
+            annotationView?.annotation = annotation
+        }
+        //3 vamos a configurar la anotation
+        if let place = annotation as? GMGaritoModel{
+            let imageName = place.imagenGarito
+            if let imageUrl = APIManagerData.shared.imagenUrl(){
+                do{
+                    let imageData = try Data(contentsOf: imageUrl.appendingPathComponent(imageName!))
+                    self.calloutSelected = UIImage(data: imageData)
+                    let myImageNewScale = resizeImage(calloutSelected!, newWidth: 40)
+                    let btnNewAction = UIButton(frame: CGRect(x: 0, y: 0, width: 40, height: 40))
+                    btnNewAction.setImage(myImageNewScale, for: .normal)
+                    annotationView?.leftCalloutAccessoryView = btnNewAction
+                    annotationView?.image = #imageLiteral(resourceName: "img_pin")
+                    annotationView?.canShowCallout = true
+                }catch let error{
+                    print("Error en la configuracion de la imagen \(error.localizedDescription)")
+                }
+            }
+        }
+        return annotationView
+    }
+    
+    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+        if control == view.leftCalloutAccessoryView{
+            performSegue(withIdentifier: "showPinImage", sender: view)
+        }
+    }
+    
+    //MARK: - Utils
+    func resizeImage(_ image : UIImage, newWidth : CGFloat) -> UIImage{
+        let scale = newWidth / image.size.width
+        let newHeight = image.size.height * scale
+        UIGraphicsBeginImageContext(CGSize(width: newWidth, height: newHeight))
+        image.draw(in: CGRect(x: 0, y: 0, width: newWidth, height: newHeight))
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return newImage!
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 }
+
+
+
+
+
+
 
 
 

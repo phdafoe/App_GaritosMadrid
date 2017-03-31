@@ -34,7 +34,6 @@ class DetalleGaritoViewController: UIViewController {
     }
     
     @IBAction func saveInfo(_ sender: Any) {
-        
         if let imageData = myImageViewPicker.image{
             let randomNameImage = UUID().uuidString.appending(".jpg")
             if let customUrl = APIManagerData.shared.imagenUrl()?.appendingPathComponent(randomNameImage){
@@ -46,16 +45,15 @@ class DetalleGaritoViewController: UIViewController {
                     }
                 }
             }
-            
             garito = GMGaritoModel(pDireccionGarito: myDireccionLBL.text!,
                                    pLatitudGarito: Double(myLatitudLBL.text!)!,
                                    pLongitudGarito: Double(myLongitudLBL.text!)!,
                                    pImagenGarito: randomNameImage)
-            
             if let infoGarito = garito{
                 ciceDelegate?.detalleBarEtiquetado(self, barEtiquetado: infoGarito)
             }
         }
+        dismiss(animated: true, completion: nil)
     }
     
     //MARK: - LIFE VC
@@ -129,6 +127,7 @@ extension DetalleGaritoViewController : UIImagePickerControllerDelegate, UINavig
             myImageViewPicker.image = imageData
             mySalvarDatosBTN.isEnabled = true
         }
+        dismiss(animated: true, completion: nil)
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
